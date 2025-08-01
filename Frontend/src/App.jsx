@@ -20,8 +20,8 @@ function App() {
     newChat, setNewChat,
     prevChats, setPrevChats,
     allThreads, setAllThreads
-  }; //passing values
-
+  };
+  
   return (
    <div className="app">
     <MyContext.Provider value={providerValues}>
