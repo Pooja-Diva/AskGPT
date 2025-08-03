@@ -24,9 +24,18 @@ const getOllamaResponse = async(message) => {
     
         try {
              const response = await fetch(process.env.OLLAMA_API_URL, options);
-             const data = await response.json();
-            //  console.log("🟡 Ollama raw response:", data);
-             return data.response;
+const text = await response.text();
+
+let data;
+try {
+  data = JSON.parse(text);
+} catch (err) {
+  console.error(" Failed to parse JSON from Ollama:", text);
+  return " Invalid JSON from Ollama.";
+}
+
+return data?.response || " No response field from Ollama.";
+
         } catch (err) {
               console.error("Error fetching from Ollama:", err);
         return " Failed to get response from local model.";
