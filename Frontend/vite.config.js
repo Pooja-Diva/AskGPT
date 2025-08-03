@@ -7,5 +7,6 @@ export default defineConfig({
    preview: {
     host: '0.0.0.0',
     port: 4173, // optional, default is 4173
+    allowedHosts: ['askgpt-frontend.onrender.com']
   }
 });
